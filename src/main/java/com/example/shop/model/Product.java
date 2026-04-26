@@ -12,7 +12,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,13 +25,11 @@ import lombok.Setter;
 @Getter // Generates all getter methods
 @Setter // Generates all setter methods
 @NoArgsConstructor // Required by JPA (empty constructor)
-@AllArgsConstructor // Constructor with all fields
 @Entity // Marks this class as a database entity (table)
 public class Product {
 
     // Primary key
     @Id
-
     // Auto-increment ID handled by database
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -76,6 +73,16 @@ public class Product {
      * orphanRemoval = true
      * → removing image from list deletes it from DB
      */
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images;
+
+    public Product(String name, String brand, BigDecimal price, int inventory, String description, Category category) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.inventory = inventory;
+        this.description = description;
+        this.category = category;
+    }
 }

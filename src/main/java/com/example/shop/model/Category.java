@@ -16,7 +16,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Category {
     @Id
@@ -25,4 +24,8 @@ public class Category {
     private String name;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
+
+    public Category(String name) {
+        this.name = name;
+    }
 }

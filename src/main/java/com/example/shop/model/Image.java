@@ -57,10 +57,10 @@ public class Image {
     private String fileType;
 
     // Marks this field as a Large Object (for storing large binary data)
-    @Lob
-    // Stores actual image data in binary format inside DB
-    @Column(name = "image_data")
-    private byte[] imageData;
+    // @Lob
+    // // Stores actual image data in binary format inside DB
+    // @Column(name = "image_data")
+    // private byte[] imageData;
 
     // URL used to download or access the image
     private String downloadUrl;
